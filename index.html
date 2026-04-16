@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timers - 頂級腕錶價格與資訊顧問</title>
+  <meta name="description" content="Timers 高級腕錶詢價小工具，為收藏家提供最專業的腕錶資訊與市場價格參考。">
+  <!-- 引入 Google Fonts：使用 Beau Rivage (Logo)、Sour Gummy (英) 與 LXGW WenKai TC (繁中) -->
+  <link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=LXGW+WenKai+TC&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- 網頁分頁小圖示 (Favicon) -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="logo-container">
+        <!-- SVG Logo: 融合金、銀、齒輪與時間元素 -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="logo-svg" width="60" height="60">
+          <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFDF73" />
+              <stop offset="50%" stop-color="#D4AF37" />
+              <stop offset="100%" stop-color="#997A00" />
+            </linearGradient>
+            <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFFFFF" />
+              <stop offset="50%" stop-color="#C0C0C0" />
+              <stop offset="100%" stop-color="#808080" />
+            </linearGradient>
+            <!-- 軟筆刷效果濾鏡 -->
+            <filter id="brushStyle">
+              <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+          </defs>
+          
+          <g filter="url(#brushStyle)">
+            <path d="M 50 2 L 56 10 A 42 42 0 0 1 65 12 L 73 5 L 79 12 L 74 20 A 42 42 0 0 1 81 27 L 90 23 L 94 33 L 85 38 A 42 42 0 0 1 85 48 L 94 53 L 90 63 L 81 59 A 42 42 0 0 1 74 66 L 79 74 L 73 81 L 65 74 A 42 42 0 0 1 56 76 L 50 84 L 44 76 A 42 42 0 0 1 35 74 L 27 81 L 21 74 L 26 66 A 42 42 0 0 1 19 59 L 10 63 L 6 53 L 15 48 A 42 42 0 0 1 15 38 L 6 33 L 10 23 L 19 27 A 42 42 0 0 1 26 20 L 21 12 L 27 5 L 35 12 A 42 42 0 0 1 44 10 L 50 2 Z" fill="none" stroke="url(#silverGradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <circle cx="50" cy="43" r="28" fill="#141414" stroke="url(#goldGradient)" stroke-width="4.5"/>
+            
+            <!-- 刻度 -->
+            <line x1="50" y1="19" x2="50" y2="25" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="50" y1="61" x2="50" y2="67" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="26" y1="43" x2="32" y2="43" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="68" y1="43" x2="74" y2="43" stroke="url(#goldGradient)" stroke-width="2.5" stroke-linecap="round"/>
+            
+            <!-- 指針 -->
+            <line x1="50" y1="43" x2="50" y2="26" stroke="url(#goldGradient)" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="50" y1="43" x2="65" y2="43" stroke="url(#silverGradient)" stroke-width="2.5" stroke-linecap="round"/>
+            
+            <circle cx="50" cy="43" r="4" fill="#ff8c00" filter="none"/>
+          </g>
+        </svg>
+        <h1 class="brand-name">Timers</h1>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- 區塊 1: 搜尋表單 -->
+      <section id="searchSection" class="section glass active">
+        <h2 class="section-title">尋找您的夢幻腕錶</h2>
+        <p class="section-subtitle">輸入型號或名稱，獲取最專業的腕錶資訊與市場行情。</p>
+        
+        <div class="form-group">
+          <label for="brandSelect">品牌 (可選)</label>
+          <div class="select-wrapper">
+            <select id="brandSelect">
+              <option value="">選擇腕錶品牌</option>
+              <option value="Rolex">Rolex 勞力士</option>
+              <option value="Patek Philippe">Patek Philippe 百達翡麗</option>
+              <option value="Audemars Piguet">Audemars Piguet (AP)</option>
+              <option value="Vacheron Constantin">Vacheron Constantin 江詩丹頓</option>
+              <option value="Omega">Omega 歐米伽</option>
+              <option value="Hublot">Hublot 宇舶錶</option>
+              <option value="IWC">IWC 萬國錶</option>
+              <option value="Cartier">Cartier 卡地亞</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="modelInput">腕錶名稱或型號 <span class="required">*</span></label>
+          <input type="text" id="modelInput" placeholder="例如: Submariner 或 126610LN" required>
+        </div>
+        
+        <!-- 錯誤提示 -->
+        <p id="errorMessage" class="error-msg hidden">請輸入腕錶名稱或型號</p>
+        
+        <button id="searchBtn" class="btn btn-primary">開始搜尋</button>
+      </section>
+
+      <!-- 區塊 2: 初步確認圖片 -->
+      <section id="confirmSection" class="section glass hidden">
+        <h2 class="section-title">這是否符合您尋找的腕錶？</h2>
+        <div class="confirm-image-wrapper">
+          <img id="confirmImg" src="" alt="初步搜尋錶款圖片" class="shimmer">
+          <div id="confirmTextPlaceholder" class="text-placeholder hidden">詳圖請參照官方網站</div>
+        </div>
+        <div class="actions">
+          <button id="btnYes" class="btn btn-primary">是，查看詳細資訊</button>
+          <button id="btnNo" class="btn btn-outline">否，不是這只</button>
+        </div>
+      </section>
+
+      <!-- 區塊 3: 找不到或重新搜尋 -->
+      <section id="noMatchSection" class="section glass hidden">
+         <h2 class="section-title" style="color: var(--orange-accent);">未能符合期望</h2>
+         <p class="section-subtitle">您可以嘗試輸入更詳細的型號，或結束本次搜尋。</p>
+         <div class="actions">
+             <button id="btnSearchAgain" class="btn btn-primary">重新搜尋</button>
+             <button id="btnStop" class="btn btn-outline">停止搜尋</button>
+         </div>
+      </section>
+
+      <!-- 區塊 4: 腕錶詳細結果 -->
+      <section id="resultSection" class="section glass hidden">
+         <h2 class="section-title">腕錶詳細資訊</h2>
+         <div class="table-container">
+             <table class="specs-table">
+                 <tbody>
+                     <tr><th>腕錶品牌</th><td id="specBrand"></td></tr>
+                     <tr><th>腕錶名稱</th><td id="specName"></td></tr>
+                     <tr><th>型號</th><td id="specModel"></td></tr>
+                     <tr><th>官網價格</th><td id="specOfficialPrice" class="price"></td></tr>
+                     <tr><th>市場價格 (Chrono24)</th><td id="specMarketPrice" class="price highlight"></td></tr>
+                     <tr><th>錶徑大小 (mm)</th><td id="specSize"></td></tr>
+                     <tr><th>錶耳長度</th><td id="specLug"></td></tr>
+                     <tr><th>腕錶材質</th><td id="specMaterial"></td></tr>
+                     <tr><th>錶帶材質</th><td id="specStrap"></td></tr>
+                     <tr><th>動力儲存 (小時)</th><td id="specPower"></td></tr>
+                     <tr><th>功能</th><td id="specFunctions"></td></tr>
+                 </tbody>
+             </table>
+         </div>
+         
+         <div class="gallery">
+             <h3 class="gallery-title">腕錶寫真</h3>
+             <div class="gallery-grid">
+                <div class="gallery-item">
+                  <img id="galleryFront" src="" alt="正面照">
+                  <div id="frontTextPlaceholder" class="text-placeholder hidden">詳圖請參照官方網站</div>
+                  <div class="gallery-caption">正面視角</div>
+                </div>
+                <div class="gallery-item">
+                  <img id="gallerySide" src="" alt="側面照">
+                  <div class="gallery-caption">側面線條</div>
+                </div>
+                <div class="gallery-item">
+                  <img id="galleryBack" src="" alt="透背照">
+                  <div class="gallery-caption">機芯透背 / 錶背</div>
+                </div>
+             </div>
+         </div>
+         
+         <div class="actions main-action">
+            <button id="btnNewSearch" class="btn btn-outline">查詢另一只腕錶</button>
+         </div>
+      </section>
+    </main>
+    
+    <footer class="footer">
+      <p>&copy; 2024 Timers - 高級腕錶詢價與收藏指南.</p>
+    </footer>
+  </div>
+  <script src="./main.js" type="module"></script>
+</body>
+</html>

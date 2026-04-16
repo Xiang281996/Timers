@@ -1,0 +1,9 @@
+.env
+*.pyc
+__pycache__/
+test_models.py
+debug_*.py
+test_*.py
+.DS_Store
+node_modules/
+patek_nautilus_front_*.png

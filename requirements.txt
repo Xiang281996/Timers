@@ -1,0 +1,2 @@
+# 本專案主要使用 Python 內建庫 (urllib, subprocess, http.server)
+# Render 需要此檔案來辨識 Python 環境
