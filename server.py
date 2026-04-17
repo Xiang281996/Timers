@@ -226,6 +226,15 @@ class TimersHandler(SimpleHTTPRequestHandler):
         self.wfile.write(json.dumps(error_response).encode('utf-8'))
 
 if __name__ == '__main__':
+    # 確保伺服器在正確的目錄執行，讓 Render 能找到 index.html
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    os.chdir(base_dir)
+    
     port = int(os.environ.get('PORT', 8086))
-    print(f"Timers AI Server (Python) is running on http://127.0.0.1:{port}")
-    HTTPServer(('0.0.0.0', port), TimersHandler).serve_forever()
+    print(f"--- Timers 伺服器啟動中 ---")
+    print(f"當前目錄: {os.getcwd()}")
+    print(f"重要檔案檢查: index.html -> {os.path.exists('index.html')}")
+    print(f"監聽連接埠: {port}")
+    
+    # 使用 Threading 模式處理併發請求，避免連線阻塞
+    ThreadingHTTPServer(('0.0.0.0', port), TimersHandler).serve_forever()
